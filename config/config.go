@@ -2,10 +2,11 @@ package config
 
 import (
 	"fmt"
-	"github.com/joho/godotenv"
 	"os"
 	"strconv"
 	"sync"
+
+	"github.com/joho/godotenv"
 )
 
 type Config struct {
@@ -13,11 +14,19 @@ type Config struct {
 }
 
 type Database struct {
-	Mysql    Mysql
-	Postgres Postgres
+	Mysql      Mysql
+	Postgresql Postgresql
 }
 
 type Mysql struct {
+	Host     string
+	Port     int
+	User     string
+	Password string
+	Database string
+}
+
+type Postgresql struct {
 	Host     string
 	Port     int
 	Username string
@@ -25,19 +34,11 @@ type Mysql struct {
 	Database string
 }
 
-type Postgres struct {
-	Host     string
-	Port     int
-	Username string
-	Password string
-}
-
-// singleton pattern
-
+// Singleton pattern
 var (
 	// cfg is the singleton configuration instance
 	cfg Config
-	// once is used for the singleton pattern
+	// once is used for initializing the singleton instance
 	once sync.Once
 )
 
@@ -47,6 +48,7 @@ func envString(key, fallback string) string {
 	}
 	return fallback
 }
+
 func envInt(key string, fallback int) int {
 	if value, ok := os.LookupEnv(key); ok {
 		// convert string to int
@@ -60,8 +62,7 @@ func envInt(key string, fallback int) int {
 	return fallback
 }
 
-// return the configuration
-
+// Get returns the configuration
 func Get() Config {
 	once.Do(func() {
 		// load configuration from environment variables
