@@ -2,7 +2,7 @@ package db
 
 import "github.com/thienchuong/golang-rest-api/models"
 
-type Database interface {
+type IDatabase interface {
 	GetAllBooks() ([]models.Book, error)
 	GetBookByID(id int) (models.Book, error)
 	CreateBook(book models.Book) (models.Book, error)
