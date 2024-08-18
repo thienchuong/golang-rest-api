@@ -12,7 +12,7 @@ type mysql struct {
 	db *sql.DB
 }
 
-func NewMysqlDb() Database {
+func NewMysqlDb() IDatabase {
 	mysqlConfig := config.Get().Database.Mysql
 
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", mysqlConfig.User, mysqlConfig.Password, mysqlConfig.Host, mysqlConfig.Port, mysqlConfig.Database)
