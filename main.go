@@ -3,9 +3,9 @@ package main
 import (
 	"net/http"
 
-	"github.com/thienchuong/go-rest-api/db"
-	"github.com/thienchuong/go-rest-api/handlers"
-	"github.com/thienchuong/go-rest-api/log"
+	"github.com/thienchuong/golang-rest-api/db"
+	"github.com/thienchuong/golang-rest-api/handlers"
+	"github.com/thienchuong/golang-rest-api/log"
 )
 
 func main() {

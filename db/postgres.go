@@ -5,8 +5,8 @@ import (
 	"fmt"
 
 	"github.com/jackc/pgx/v5"
-	"github.com/thienchuong/go-rest-api/config"
-	"github.com/thienchuong/go-rest-api/models"
+	"github.com/thienchuong/golang-rest-api/config"
+	"github.com/thienchuong/golang-rest-api/models"
 )
 
 type postgres struct {
